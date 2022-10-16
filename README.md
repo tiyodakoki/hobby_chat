@@ -32,7 +32,6 @@
 | concept        | string   | null: false       |
 | category_id    | integer  | null: false       |
 | area_id        | integer  | null: false       |
-| tag            | string   | unique: true      |
 
 ## association
 - has_many :room_users
