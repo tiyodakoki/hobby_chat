@@ -1,4 +1,4 @@
-<%= form_with model: @room, local: true do |f|%>
+<%= form_with model: @room_form, url: new_room_path,  local: true do |f|%>
 <%= f.text_area :room_name, class:"room-name", id:"room-name", placeholder:"ルーム名"%>
 <%= f.text_area :concept, class:"room-concept", id:"room-concept",placeholder:"コンセプト"%>
 <%= f.collection_select(:area_id, Area.all, :id, :name, {}, {class:"select-box", id:"room-category"}) %>
