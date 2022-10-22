@@ -22,7 +22,7 @@ class RoomsController < ApplicationController
 
   private
   def room_form_params
-    params.require(:room_form).permit(:room_name, :concept, :category_id, :area_id, :tag_name)
+    params.require(:room_form).permit(:room_name, :concept, :category_id, :area_id, :tag_name).merge(user_id: current_user.id)
   end
 
 end

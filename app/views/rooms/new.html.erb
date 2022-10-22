@@ -1,6 +1,7 @@
-<%= form_with model: @room_form, url: new_room_path,  local: true do |f|%>
+<%= form_with model: @room_form, url: rooms_path, method: :post,  local: true do |f|%>
 <%= f.text_area :room_name, class:"room-name", id:"room-name", placeholder:"ルーム名"%>
 <%= f.text_area :concept, class:"room-concept", id:"room-concept",placeholder:"コンセプト"%>
+<%= f.text_area :tag_name, class: "room-tag", id: "room-tag", placeholder: "タグ名"%>
 <%= f.collection_select(:area_id, Area.all, :id, :name, {}, {class:"select-box", id:"room-category"}) %>
 <%= f.collection_select(:category_id, Category.all, :id, :name, {}, {class:"select-box", id:"room-category"}) %>
 <%= f.submit "作成する" ,class:"sell-btn" %>
