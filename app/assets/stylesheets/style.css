@@ -25,4 +25,38 @@
 li{
   padding-left: 20px;
 }
+.content-list{
+}
+.content-main{
+  width: 100%;
+  height: calc(100%-100px);
+ 
+}
+.content-top{
+  display: flex;
+  position: relative;
+  justify-content: space-around;
+}
+.content-center{
+  display: flex;
+  justify-content: space-around;
+}
+.content-bottom{
+  display: flex;
+  justify-content: space-around;
+}
+p{
+position: absolute;
+}
+.category img{
+  opacity: 0.5;
+  height: auto;
+  width: 300px;
+
+}
+.category{
+  height: 300px;
+  width: 300px;
+
+}
 

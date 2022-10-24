@@ -1,12 +1,12 @@
 class RoomsController < ApplicationController
   def index
-    @rooms = Room.all
+    # @rooms = Room.category(params[:category_id])
   end
   def new
     @room_form = RoomForm.new
   end
   def show
-    @room = Room.find[params[:id]]
+    @rooms = Room.category(params[:category_id])
   end
 
     

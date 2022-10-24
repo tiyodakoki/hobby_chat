@@ -1,10 +1,22 @@
 <%=  render "shared/header" %>
-<div class="content-content">
-<div class="content">
-<%# <%= link_to image_tag("igo.jpeg" , size: '185x50'), room_path %> 
-<% @rooms.each do |room| %>
-<%= link_to room.room_name, room_messages_path(room.id)  %>
-<% end%>
+<div class="content-main">
+<div class="content-list">
+<div class="content-top">
+<div class="category"><%= link_to image_tag("igo.jpeg" ), "rooms/?category_id=2" %><p>ボードゲーム</p></div> 
+<div class="category"><%= link_to image_tag("igo.jpeg" ), "rooms/?category_id=3" %><p>デジタルゲーム</p> </div>
+<div class="category"><%= link_to image_tag("igo.jpeg" ), "rooms/?category_id=4" %><p>コミック<p></div>
+</div>
+<div class="content-center"> 
+<div class="category"><%= link_to image_tag("igo.jpeg" ), "rooms/?category_id=5" %><p>映画</p></div> 
+<div class="category"><%= link_to image_tag("igo.jpeg" ), "rooms/?category_id=6" %><p>スポーツ</p> </div>
+<div class="category"><%= link_to image_tag("gamble.jpeg" ), "rooms/?category_id=7" %><p>ギャンブル</p> </div>
+</div>
+<div class="content-bottom">
+<div class="category"><%= link_to image_tag("igo.jpeg" ), "rooms/?category_id=8" %><p>その他</p> </div>
+</div>
+
+
+
 </div>
 </div>
 

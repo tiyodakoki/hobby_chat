@@ -8,4 +8,10 @@ class Room < ApplicationRecord
   has_many :messages
   has_many :room_tags
   has_many :tags, through: :room_tags
+
+  def self.category(category_id)
+  Room.where(category_id: category_id)
+
+  
+  end
 end
