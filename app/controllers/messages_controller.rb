@@ -8,11 +8,11 @@ class MessagesController < ApplicationController
   def create
     @room = Room.find(params[:room_id])
     # binding.pry
-    @message = @room.messages.new(message_params)
+    message = @room.messages.new(message_params)
 
-    if @message.save
+    if message.save
       # redirect_to action: :index
-    render json: { message: @message}
+    render json: {message: message}
     end
     # if @message.save
     #   redirect_to action: :index
