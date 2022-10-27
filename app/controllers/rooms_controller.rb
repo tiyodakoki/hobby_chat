@@ -3,16 +3,22 @@ class RoomsController < ApplicationController
     @rooms = Room.all
   end
   def new
-    @room = Room.new
+    @room_form = RoomForm.new
   end
   def show
-    @room = Room.find[params[:id]]
+    @rooms = Room.category(params[:category_id])
+  end
+  def search
+    keyword = params[:keyword]
+    tag = params[:keyword]
+    @rooms = Room.search(keyword, tag)
   end
 
     
   def create
-    @room = Room.new(room_params)
-    if @room.save
+    @room_form = RoomForm.new(room_form_params)
+    if @room_form.valid?
+      @room_form.save
       redirect_to root_path
     else
       render :new
@@ -20,8 +26,8 @@ class RoomsController < ApplicationController
   end
 
   private
-  def room_params
-    params.require(:room).permit(:room_name, :concept, :category_id, :area_id).merge(user_id: current_user.id)
+  def room_form_params
+    params.require(:room_form).permit(:room_name, :concept, :category_id, :area_id, :tag_name).merge(user_id: current_user.id)
   end
 
 end
