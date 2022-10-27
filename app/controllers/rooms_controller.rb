@@ -1,12 +1,17 @@
 class RoomsController < ApplicationController
   def index
-    # @rooms = Room.category(params[:category_id])
+    @rooms = Room.all
   end
   def new
     @room_form = RoomForm.new
   end
   def show
     @rooms = Room.category(params[:category_id])
+  end
+  def search
+    keyword = params[:keyword]
+    tag = params[:keyword]
+    @rooms = Room.search(keyword, tag)
   end
 
     
