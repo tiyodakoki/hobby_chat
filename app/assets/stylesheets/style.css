@@ -66,6 +66,32 @@ position: absolute;
   display: flex;
   justify-content: center;
   align-items: center;
-  position: absolute;
+  /* position: absolute; */
+  bottom: 0;
 
+}
+.room-show{
+  height: calc(100%-200px);
+  background-color: bisque;
+  width: 100%;
+
+}
+.new-room{
+  display: flex;
+
+}
+.new-main{
+  display: flex;
+  height: 100%;
+  width: 100%;
+  background-image: url("room-background.png");
+}
+.new-content{
+  padding-top: 20px;
+}
+.new-list{
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  
 }

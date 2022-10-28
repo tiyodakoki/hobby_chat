@@ -14,13 +14,16 @@ function message (){
       console.log(XHR.response.message);
       const item = XHR.response.message;
       const contentsArea = document.getElementById("list");
-      const articleText = document.getElementById("new-message");
+      const roomText = document.getElementById("new-message");
+      // const roomImage = document.getElementById("new-image");
       const HTML = `
         <div class="article">
           ${ item.content }
+          ${ item.created_at}
         </div>`;
       contentsArea.insertAdjacentHTML("afterbegin", HTML);
-      articleText.value = "";
+      roomText.value = "";
+      roomImage.value ="";
     };
      e.preventDefault();
   });

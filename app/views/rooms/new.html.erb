@@ -1,8 +1,15 @@
+<%= render "shared/header"%>
+<div class="new-main">
+<div class="new-list">
 <%= form_with model: @room_form, url: rooms_path, method: :post,  local: true do |f|%>
-<%= f.text_area :room_name, class:"room-name", id:"room-name", placeholder:"ルーム名"%>
-<%= f.text_area :concept, class:"room-concept", id:"room-concept",placeholder:"コンセプト"%>
-<%= f.text_area :tag_name, class: "room-tag", id: "room-tag", placeholder: "タグ名"%>
-<%= f.collection_select(:area_id, Area.all, :id, :name, {}, {class:"select-box", id:"room-category"}) %>
-<%= f.collection_select(:category_id, Category.all, :id, :name, {}, {class:"select-box", id:"room-category"}) %>
-<%= f.submit "作成する" ,class:"sell-btn" %>
+<div class="new-form">
+<div class="new-content"><h1>ルーム名</h1><%= f.text_area :room_name, class:"room-name", id:"room-name", placeholder:"ルーム名"%></div>
+<div class="new-content"><h1>コンセプト</h1><%= f.text_area :concept, class:"room-concept", id:"room-concept",placeholder:"コンセプト"%></div>
+<div class="new-content"><h1>タグ</h1><%= f.text_area :tag_name, class: "room-tag", id: "room-tag", placeholder: "タグ名"%></div>
+<div class="new-content"><h1>エリア</h1><%= f.collection_select(:area_id, Area.all, :id, :name, {}, {class:"select-box", id:"room-category"}) %></div>
+<div class="new-content"><h1>カテゴリー</h1><%= f.collection_select(:category_id, Category.all, :id, :name, {}, {class:"select-box", id:"room-category"}) %></div>
+<div class="new-content"><%= f.submit "作成する" ,class:"sell-btn" %><div>
+</div>
 <%end%>
+</div>
+</div>

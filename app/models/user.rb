@@ -6,7 +6,10 @@ class User < ApplicationRecord
          
   extend ActiveHash::Associations::ActiveRecordExtensions
   belongs_to_active_hash :area
+  belongs_to_active_hash :category
   has_many :room_users
   has_many :room, through: :room_users
+  
+  
          
 end
