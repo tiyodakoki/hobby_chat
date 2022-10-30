@@ -11,6 +11,7 @@
     </div>
     <div class="post-content">
       <%= message.content %>
+      <%= message.user.nickname%>
     </div>
 
     <%= image_tag message.image.variant(resize: '200x200'), class: 'message-image' if message.image.attached? %>
@@ -30,3 +31,6 @@
   </div>
   <%= f.submit '送信', class: 'form-submit', id: 'submit' %>
 <% end %>
+
+<%= button_to "所属する", room_user_room_path(@room.id), method: :post %>
+

@@ -19,6 +19,7 @@ function message (){
       const HTML = `
         <div class="article">
           ${ item.content }
+          ${item.user.nickname } 
           ${ item.created_at}
         </div>`;
       contentsArea.insertAdjacentHTML("afterbegin", HTML);

@@ -14,9 +14,8 @@ class Room < ApplicationRecord
 end
   def self.search(search, tag)
     if search != "" 
-      Room.where('room_name LIKE(?)', "%#{search}%") if  Room.where('room_name LIKE(?)', "%#{search}%").present?  
-    elsif
-      Room.tag.where('tag_name LIKE(?)', "%#{tag}%")
+      Room.where('room_name LIKE(?)', "%#{search}%") 
+      # Tag.where('tag_name LIKE(?)', "%#{tag}%")
     else
       Room.All
     end

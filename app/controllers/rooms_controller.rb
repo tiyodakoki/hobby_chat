@@ -13,6 +13,18 @@ class RoomsController < ApplicationController
     tag = params[:keyword]
     @rooms = Room.search(keyword, tag)
   end
+  def room_user
+    # @room = Room.find(params[:id])
+    # RoomUser.create(room_params)
+    # redirect_to action: :index
+    # end
+    
+      @room = Room.find(params[:id])
+      user = User.find(params[:id])
+      @room.users << user
+      redirect_to action: :index
+  end
+    
 
     
   def create
@@ -29,6 +41,9 @@ class RoomsController < ApplicationController
   def room_form_params
     params.require(:room_form).permit(:room_name, :concept, :category_id, :area_id, :tag_name).merge(user_id: current_user.id)
   end
+  # def room_params
+  #   params.require(:room).merge(user_id: current_user.id, room_id: params[:room_id])
+  # end
 
 end
 

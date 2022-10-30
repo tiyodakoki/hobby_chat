@@ -3,9 +3,12 @@ class MessagesController < ApplicationController
     @message = Message.new
     @room = Room.find(params[:room_id])
     @messages = @room.messages.order(id: "DESC")
-    
+
    
   end
+
+  
+
   def create
     @room = Room.find(params[:room_id])
     # binding.pry
@@ -27,5 +30,6 @@ private
 def message_params
   params.require(:message).permit(:content, :image).merge(user_id: current_user.id)
 end
+
 
 end

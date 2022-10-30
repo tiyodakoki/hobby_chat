@@ -5,6 +5,11 @@ Rails.application.routes.draw do
     collection do
       get 'search'
     end
+      member do
+        post 'room_user'
+      end
+    
     resources :messages, only: [:index, :create]
+  
   end
 end

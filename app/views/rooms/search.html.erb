@@ -1,4 +1,5 @@
 <%=  render "shared/header" %>
+
 <% @rooms.each do |room|%>
 <%= link_to room.room_name, room_messages_path(room.id)  %>
 <%= room.concept%>
