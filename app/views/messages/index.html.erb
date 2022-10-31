@@ -1,6 +1,7 @@
 <%=  render "shared/header" %>
+
 <div class="main-messages">
-コメント一覧</div>
+
 <div id="list">
 
 
@@ -17,6 +18,19 @@
     <%= image_tag message.image.variant(resize: '200x200'), class: 'message-image' if message.image.attached? %>
   </div>
 <% end %>
+<div class="propose-list">
+
+</div>
+<div class="message-propose">
+<%= form_with url: propose_room_path(@room.id), method: :post, class: 'form', id: 'propose-form', local: true do |f|%>
+<div class="form-input">
+<%= f.text_field :title, class: 'form-title', id: 'new-propose', placeholder: 'タイトルを入力してください'%>
+<%= f.text_field :concept, class: 'form-concept', id: 'new-concept', placeholder: '目的を入力してください'%>
+<%= f.number_field :require_people, in: 1..20, class: 'form-require', id: 'new-require', placeholder:'必要最低人数を入力してください'%>
+</div>
+<%= f.submit '作成する', class: "propose-submit", id: "propose-submit"%>
+<% end %>
+</div>
 </div>
 
 

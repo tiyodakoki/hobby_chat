@@ -1,0 +1,2 @@
+class Propose < ApplicationRecord
+end

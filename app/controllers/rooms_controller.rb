@@ -24,6 +24,13 @@ class RoomsController < ApplicationController
       @room.users << user
       redirect_to action: :index
   end
+  def propose
+    @room = Room.find(params[:id])
+    @propose = Propose.create(propose_params)
+  end
+
+
+  
     
 
     
@@ -41,6 +48,10 @@ class RoomsController < ApplicationController
   def room_form_params
     params.require(:room_form).permit(:room_name, :concept, :category_id, :area_id, :tag_name).merge(user_id: current_user.id)
   end
+  def propose_params
+  params.permit(:title, :concept, :require_people).merge(user_id: current_user.id, room_id: @room.id)
+end
+ 
   # def room_params
   #   params.require(:room).merge(user_id: current_user.id, room_id: params[:room_id])
   # end

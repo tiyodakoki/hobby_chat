@@ -7,10 +7,11 @@ class MessagesController < ApplicationController
    
   end
 
+
   
 
   def create
-    @room = Room.find(params[:room_id])
+    @room = Room.find(params[:id])
     # binding.pry
     message = @room.messages.new(message_params)
 
@@ -30,6 +31,8 @@ private
 def message_params
   params.require(:message).permit(:content, :image).merge(user_id: current_user.id)
 end
+
+
 
 
 end
