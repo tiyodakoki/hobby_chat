@@ -3,6 +3,9 @@ class MessagesController < ApplicationController
     @message = Message.new
     @room = Room.find(params[:room_id])
     @messages = @room.messages.order(id: "DESC")
+    @propose = Propose.find(params[:room_id])
+    @proposes = @room.propose.order(id: "DESC")
+
 
    
   end
@@ -11,8 +14,7 @@ class MessagesController < ApplicationController
   
 
   def create
-    @room = Room.find(params[:id])
-    # binding.pry
+    @room = Room.find(params[:room_id])
     message = @room.messages.new(message_params)
 
     if message.save

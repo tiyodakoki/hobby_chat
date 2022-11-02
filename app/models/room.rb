@@ -8,6 +8,7 @@ class Room < ApplicationRecord
   has_many :messages
   has_many :room_tags
   has_many :tags, through: :room_tags
+  has_many :propose
 
   def self.category(category_id)
   Room.where(category_id: category_id)

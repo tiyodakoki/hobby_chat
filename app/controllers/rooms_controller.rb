@@ -26,7 +26,11 @@ class RoomsController < ApplicationController
   end
   def propose
     @room = Room.find(params[:id])
-    @propose = Propose.create(propose_params)
+    @propose = Propose.new(propose_params)
+    if @propose.save
+    redirect_back(fallback_location: room_messages_path(@room.id))
+    end
+
   end
 
 

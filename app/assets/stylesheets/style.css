@@ -95,3 +95,10 @@ position: absolute;
   align-items: center;
   
 }
+.main-messages{
+  display: flex;
+  justify-content: space-between;
+}
+.propose-list{
+
+}
