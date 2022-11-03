@@ -24,12 +24,16 @@
           <%= f.label :nickname, "ユーザー名" %><br />
           <%= f.text_field :nickname, id:"nickname" %>
         </div>
-        <div class="weight-bold-text">
+        <div class="field">
           エリア
           <span class="indispensable">必須</span>
         </div>
         <%= f.collection_select(:area_id, Area.all, :id, :name, {}, {class:"select-box", id:"area"}) %>
-
+        <div class="field">
+          お気に入りのカテゴリー(1つ)
+          <span class="indispensable">必須</span>
+        </div>
+        <%= f.collection_select(:category_id, Category.all, :id, :name, {}, {class:"select-box", id:"category"}) %>
 
 
         <div class="actions">

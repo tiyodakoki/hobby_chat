@@ -1,6 +1,6 @@
 class RoomsController < ApplicationController
   def index
-    @rooms = Room.all
+    @rooms =Room.all
   end
   def new
     @room_form = RoomForm.new
@@ -13,6 +13,29 @@ class RoomsController < ApplicationController
     tag = params[:keyword]
     @rooms = Room.search(keyword, tag)
   end
+  def room_user
+    # @room = Room.find(params[:id])
+    # RoomUser.create(room_params)
+    # redirect_to action: :index
+    # end
+    
+      @room = Room.find(params[:id])
+      user = User.find(params[:id])
+      @room.users << user
+      redirect_to action: :index
+  end
+  def propose
+    @room = Room.find(params[:id])
+    @propose = Propose.new(propose_params)
+    if @propose.save
+    redirect_back(fallback_location: room_messages_path(@room.id))
+    end
+
+  end
+
+
+  
+    
 
     
   def create
@@ -29,6 +52,13 @@ class RoomsController < ApplicationController
   def room_form_params
     params.require(:room_form).permit(:room_name, :concept, :category_id, :area_id, :tag_name).merge(user_id: current_user.id)
   end
+  def propose_params
+  params.permit(:title, :concept, :require_people).merge(user_id: current_user.id, room_id: @room.id)
+end
+ 
+  # def room_params
+  #   params.require(:room).merge(user_id: current_user.id, room_id: params[:room_id])
+  # end
 
 end
 

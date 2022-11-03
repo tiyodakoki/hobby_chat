@@ -13,6 +13,20 @@
 </div>
 <div class="content-bottom">
 <div class="category"><%= link_to image_tag("etc.jpeg" ), "rooms/?category_id=8" %><p>その他</p> </div>
+<% if user_signed_in?%>
+<div class="category"> あなたへのオススメ
+
+<% @rooms.each do |room|%>
+<% if (current_user.category_id == room.category_id) && (current_user.area_id == room.area_id)%>
+<div>
+<%= link_to room.room_name, room_messages_path(room.id)  %>
+<%= room.concept%>
+<%= room.area.name%><br>
+</div>
+<% end%>
+<% end%>
+</div>
+<% end %>
 </div>
 
 

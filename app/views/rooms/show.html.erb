@@ -1,7 +1,12 @@
 <%=  render "shared/header" %>
+<div class="room-show">
+<div>
 <% @rooms.each do |room|%>
+<div>
 <%= link_to room.room_name, room_messages_path(room.id)  %>
 <%= room.concept%>
 <%= room.area.name%><br>
+</div>
 <% end%>
-<%= render "shared/footer"%>
+<div>
+</div>

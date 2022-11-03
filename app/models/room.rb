@@ -8,15 +8,15 @@ class Room < ApplicationRecord
   has_many :messages
   has_many :room_tags
   has_many :tags, through: :room_tags
+  has_many :propose
 
   def self.category(category_id)
   Room.where(category_id: category_id)
 end
   def self.search(search, tag)
     if search != "" 
-      Room.where('room_name LIKE(?)', "%#{search}%") if  Room.where('room_name LIKE(?)', "%#{search}%").present?  
-    elsif
-      Room.tag.where('tag_name LIKE(?)', "%#{tag}%")
+      Room.where('room_name LIKE(?)', "%#{search}%") 
+      # Tag.where('tag_name LIKE(?)', "%#{tag}%")
     else
       Room.All
     end
