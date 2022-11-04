@@ -19,7 +19,6 @@ function message (){
       const HTML = `
         <div class="article">
           ${ item.content }
-          ${ item.created_at}
         </div>`;
       contentsArea.insertAdjacentHTML("afterbegin", HTML);
       roomText.value = "";

@@ -3,7 +3,7 @@
   justify-content: space-between;
   width: 100%;
   padding: 0 100px 0 30px;
-  background-color: #DBDBDB;
+  background-color: gray;
 }
 
 .header a {
@@ -98,7 +98,27 @@ position: absolute;
 .main-messages{
   display: flex;
   justify-content: space-between;
+  overflow-y: auto;
+  height: calc(100%-200px);
+  font-size: large;
+}
+.propose{
+  border: 1px solid;
+  margin: 10px;
+  font-size: 20px;
 }
 .propose-list{
+  background-color: whitesmoke;
+  width: 500px;
 
+ 
+}
+.form-list{
+ position: absolute;
+ height: 100px;
+ bottom: 0;
+ background-color: azure;
+ width: 100%;
+ display: flex;
+ position: fixed;
 }
