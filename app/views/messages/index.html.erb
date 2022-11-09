@@ -15,7 +15,7 @@
       <%= message.user.nickname%>
     </div>
 
-    <%= image_tag message.image.variant(resize: '200x200'), class: 'message-image' if message.image.attached? %>
+    <%# <%= image_tag message.image.variant(resize: '200x200'), class: 'message-image' if message.image.attached? %> 
   </div>
 <% end %>
 </div>
@@ -30,14 +30,24 @@
 目的：<%= propose.concept %>
 </div>
 <div class="propose-require">
-人数：<%= "#{propose.require_people}人" %>
+必要人数：<%= "#{propose.require_people}人" %>
 </div>
 <div class="propose-info">
 提案者:<%= propose.user.nickname%>
 </div>
+<div class="propose-good">
+<%= button_to "いいね", good_room_path(@room.id), method: :post %>
+参加者:<%= propose.goods.count%>人 
 </div>
-
+<div class="propose-join">
+参加者リスト:<% @goods.each do |good|%>
+<%= good.user_nickname %>
 <% end %>
+</div>
+</div> 
+
+
+<% end%>
 </div>
 </div>
 
@@ -48,10 +58,10 @@
 <%= form_with  model: [@room, @message], method: :post, class: 'form', id: 'form', local: true do |f| %>
   <div class="form-input">
     <%= f.text_field :content, class: 'form-message', id: "new-message", placeholder: 'type a message'%>
-    <label class="form-image">
+    <%# <label class="form-image">
       <span class="image-file">画像</span>
       <%= f.file_field :image, class: 'hidden', id: 'new-image' %>
-    </label>
+    <%# </label> %> 
   <%= f.submit '送信', class: 'form-submit', id: 'submit' %>
   </div>
 <% end %>

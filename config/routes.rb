@@ -8,11 +8,15 @@ Rails.application.routes.draw do
       member do
         post 'room_user'
         post 'propose'
+        post 'good'
       end
   
     
-    resources :messages, only: [:index, :create] 
- 
+    resources :messages, only: [:index, :create, :new] 
+  
+    
+      
+    
 
   
   end

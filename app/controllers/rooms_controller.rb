@@ -24,20 +24,7 @@ class RoomsController < ApplicationController
       @room.users << user
       redirect_to action: :index
   end
-  def propose
-    @room = Room.find(params[:id])
-    @propose = Propose.new(propose_params)
-    if @propose.save
-    redirect_back(fallback_location: room_messages_path(@room.id))
-    end
-
-  end
-
-
   
-    
-
-    
   def create
     @room_form = RoomForm.new(room_form_params)
     if @room_form.valid?
@@ -47,14 +34,30 @@ class RoomsController < ApplicationController
       render :new
     end
   end
+  def propose
+    @room = Room.find(params[:id])
+    @propose = Propose.new(propose_params)
+    if @propose.save
+    redirect_to room_messages_path(@room.id)
+    end
+  end
+  def good
+  @propose = Propose.find(params[:id])
+  @good = Good.new(user_id: current_user.id, propose_id: @propose.id)
+  @good.save
+  end
 
   private
   def room_form_params
     params.require(:room_form).permit(:room_name, :concept, :category_id, :area_id, :tag_name).merge(user_id: current_user.id)
   end
   def propose_params
-  params.permit(:title, :concept, :require_people).merge(user_id: current_user.id, room_id: @room.id)
-end
+    params.permit(:title, :concept, :require_people).merge(user_id: current_user.id, room_id: @room.id)
+  end
+  # def good_params
+  #   params.merge(propose_id: @propose.id, user_id: current_user.id)
+  # end
+  
  
   # def room_params
   #   params.require(:room).merge(user_id: current_user.id, room_id: params[:room_id])

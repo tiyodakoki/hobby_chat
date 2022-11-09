@@ -22,7 +22,6 @@ function message (){
         </div>`;
       contentsArea.insertAdjacentHTML("afterbegin", HTML);
       roomText.value = "";
-      roomImage.value ="";
     };
      e.preventDefault();
   });

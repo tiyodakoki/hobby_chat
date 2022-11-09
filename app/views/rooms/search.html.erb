@@ -1,8 +1,24 @@
 <%=  render "shared/header" %>
-
+<div class="rooms-show">
+<div class="room-show">
+<a>ルーム一覧</a>
+</div>
+<div class="rooms">
 <% @rooms.each do |room|%>
-<%= link_to room.room_name, room_messages_path(room.id)  %>
-<%= room.concept%>
-<%= room.area.name%>
+<div class="rooms-info">
+<div class="room-info">
+ルーム名：<%= link_to room.room_name, room_messages_path(room.id), class: "link"  %>
+</div>
+<div class="room-info">
+コンセプト：<%= room.concept%>
+</div>
+<div class="room-info">
+カテゴリー名：<%= room.category.name%>
+</div>
+<div class="room-info">
+県名：<%= room.area.name%><br>
+</div>
+</div>
 <% end%>
-
+<div>
+</div>

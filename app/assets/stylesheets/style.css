@@ -70,12 +70,7 @@ position: absolute;
   bottom: 0;
 
 }
-.room-show{
-  height: calc(100%-200px);
-  background-color: bisque;
-  width: 100%;
 
-}
 .new-room{
   display: flex;
 
@@ -99,16 +94,17 @@ position: absolute;
   display: flex;
   justify-content: space-between;
   overflow-y: auto;
-  height: calc(100%-200px);
+  height: 100%;
   font-size: large;
 }
 .propose{
   border: 1px solid;
   margin: 10px;
   font-size: 20px;
+background-color:whitesmoke;
 }
 .propose-list{
-  background-color: whitesmoke;
+
   width: 500px;
 
  
@@ -121,4 +117,34 @@ position: absolute;
  width: 100%;
  display: flex;
  position: fixed;
+}
+/* room-show */
+.rooms{
+  height: 100px;
+  width: 400px;
+  margin-top: 10px;
+  margin-right: 50px;
+  background-color:whitesmoke;
+  color: black;
+}
+.room-show{
+  margin-top: 30px;
+  margin-left: 30px;
+ 
+}
+.room-show a{
+  font-size: 30px;
+}
+.rooms-show{
+display: flex;
+justify-content: space-between;
+}
+.link{
+  border-radius: auto;
+  color:#000000;
+  font-size: large;
+  
+}
+.hidden{
+  display: none;
 }

@@ -8,7 +8,17 @@
   <%= form.text_field :keyword, placeholder: "ルームを検索する", class: "search-input" %>
   <%= form.submit "検索", class: "search-btn" %>
 <% end %>
-  <li><%= link_to 'カテゴリー', "#", class: "category-list"%></li>
+  <li id="category-menu">カテゴリー
+  <ul class="category-lists hidden" id="category-pull-down">
+  <li><%=link_to 'ボードゲーム',"rooms/?category_id=2"%></li>
+  <li><%=link_to 'デジタルゲーム',"rooms/?category_id=3"%></li>
+  <li><%=link_to 'コミック',"rooms/?category_id=4"%></li>
+  <li><%=link_to '映画',"rooms/?category_id=5"%></li>
+  <li><%=link_to 'スポーツ',"rooms/?category_id=6"%></li>
+  <li><%=link_to 'ギャンブル',"rooms/?category_id=7"%></li>
+  <li><%=link_to 'その他',"rooms/?category_id=8"%></li>
+  </li>
+  </ul>
  
   <% unless user_signed_in?%>
   <li><%= link_to 'ログイン', new_user_session_path, class: "sign-in"%></li>
