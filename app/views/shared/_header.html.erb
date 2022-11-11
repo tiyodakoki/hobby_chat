@@ -8,7 +8,7 @@
   <%= form.text_field :keyword, placeholder: "ルームを検索する", class: "search-input" %>
   <%= form.submit "検索", class: "search-btn" %>
 <% end %>
-  <li id="category-menu">カテゴリー
+  <li class="category-menu" id="category-menu">カテゴリー
   <ul class="category-lists hidden" id="category-pull-down">
   <li><%=link_to 'ボードゲーム',"rooms/?category_id=2"%></li>
   <li><%=link_to 'デジタルゲーム',"rooms/?category_id=3"%></li>

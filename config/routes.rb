@@ -7,13 +7,19 @@ Rails.application.routes.draw do
     end
       member do
         post 'room_user'
-        post 'propose'
-        post 'good'
+      
+        
       end
   
     
     resources :messages, only: [:index, :create, :new] 
+
   
+  resources :proposes, only: [:create, :destroy] do
+    member do
+      post 'good'
+  end
+end
     
       
     

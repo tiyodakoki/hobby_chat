@@ -3,10 +3,10 @@ window.addEventListener('load', function(){
   const pullDownMenu = document.getElementById("category-pull-down");
 
   menu.addEventListener('mouseover', function(){
-    this.setAttribute("style", "background-color: white;");
+    this.setAttribute("style", "background-color: gray;");
   });
   menu.addEventListener("mouseout", function(){
-    this.removeAttribute("style", "background-color: white;");
+    this.removeAttribute("style", "background-color: gray;");
   });
   menu.addEventListener("click", function(){
     if (pullDownMenu.getAttribute("style") == "display:block;") {

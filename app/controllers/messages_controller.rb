@@ -5,9 +5,9 @@ class MessagesController < ApplicationController
     @messages = @room.messages.order(id: "DESC")
     @propose = Propose.new
     @proposes = @room.proposes.order(id: "DESC")
-    @good = Good.find(params[:room_id])
-    @goods = @propose.goods.order(id: "DESC")
-    binding.pry
+
+    @goods = @propose.goods
+    
 
   
     
@@ -26,7 +26,7 @@ class MessagesController < ApplicationController
    
     message = @room.messages.new(message_params)
    
-
+    
 
     if message.save
       # redirect_to action: :index

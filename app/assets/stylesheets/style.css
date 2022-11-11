@@ -2,7 +2,7 @@
   display: flex;
   justify-content: space-between;
   width: 100%;
-  padding: 0 100px 0 30px;
+  padding: 0 230px 0 30px;
   background-color: gray;
 }
 
@@ -147,4 +147,27 @@ justify-content: space-between;
 }
 .hidden{
   display: none;
+}
+.category-menu{
+  margin: 0 auto;
+  position: relative;
+
+
+}
+.category-lists li{
+  display: flex;
+  height: 35px;
+  line-height: 50px;
+  text-align: center;
+  color: white;
+  border: 1px solid #CCCCCC;
+  background-color: whitesmoke;
+  position: relative;
+  width: 100px;
+  
+  
+}
+.category-lists{
+  /* padding-top: 250px; */
+  position: absolute;
 }

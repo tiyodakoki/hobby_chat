@@ -22,9 +22,12 @@
 <div class="propose-list">
 <% @proposes.each do |propose|%>
 
+
+
+
 <div class="propose">
 <div class="propose-title">
-タイトル：<%= propose.title %>
+タイトル：<%= propose.title %> 
 </div>
 <div class=propose-concept>
 目的：<%= propose.concept %>
@@ -36,13 +39,16 @@
 提案者:<%= propose.user.nickname%>
 </div>
 <div class="propose-good">
-<%= button_to "いいね", good_room_path(@room.id), method: :post %>
+<%= button_to "いいね", good_room_propose_path(@room.id, propose.id), method: :post %>
 参加者:<%= propose.goods.count%>人 
 </div>
 <div class="propose-join">
-参加者リスト:<% @goods.each do |good|%>
-<%= good.user_nickname %>
+
+参加者リスト:
+<% propose.goods.each do |good| %>
+ <%=good.user.nickname%>
 <% end %>
+
 </div>
 </div> 
 
@@ -68,7 +74,7 @@
 </div>
 
 <div class="message-propose">
-<%= form_with url: propose_room_path(@room.id), method: :post, class: 'form', id: 'propose-form', local: true do |f|%>
+<%= form_with url: room_proposes_path(@room.id), method: :post, class: 'form', id: 'propose-form', local: true do |f|%>
 <div class="form-input">
 <%= f.text_field :title, class: 'form-title', id: 'new-propose', placeholder: 'タイトルを入力してください'%>
 <%= f.text_field :concept, class: 'form-concept', id: 'new-concept', placeholder: '目的を入力してください'%>
