@@ -119,7 +119,7 @@ background-color:whitesmoke;
  position: fixed;
 }
 /* room-show */
-.rooms{
+.rooms-info{
   height: 100px;
   width: 400px;
   margin-top: 10px;
@@ -138,6 +138,9 @@ background-color:whitesmoke;
 .rooms-show{
 display: flex;
 justify-content: space-between;
+}
+.rooms-list{
+  text-decoration: none;
 }
 .link{
   border-radius: auto;

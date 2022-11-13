@@ -13,10 +13,9 @@ class Room < ApplicationRecord
   def self.category(category_id)
   Room.where(category_id: category_id)
 end
-  def self.search(search, tag)
-    if search != "" 
-      Room.where('room_name LIKE(?)', "%#{search}%") 
-      # Tag.where('tag_name LIKE(?)', "%#{tag}%")
+  def self.search(search)
+    if search != nil
+      Room.where('room_name LIKE(?) or concept LIKE(?)' , "%#{search}%",  "%#{search}%")
     else
       Room.All
     end

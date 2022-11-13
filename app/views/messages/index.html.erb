@@ -39,7 +39,7 @@
 提案者:<%= propose.user.nickname%>
 </div>
 <div class="propose-good">
-<%= button_to "いいね", good_room_propose_path(@room.id, propose.id), method: :post %>
+<%= button_to "参加する", good_room_propose_path(@room.id, propose.id), method: :post %>
 参加者:<%= propose.goods.count%>人 
 </div>
 <div class="propose-join">
@@ -84,6 +84,10 @@
 <% end %>
 </div>
 </div>
+<% unless @room.users.exists?(id: current_user.id)%>
 <%= button_to "所属する", room_user_room_path(@room.id), method: :post %>
+<% else %>
+<%= button_to "脱退する", deroom_user_room_path(@room.id), method: :delete %>
+<%end %>
 </div>
 

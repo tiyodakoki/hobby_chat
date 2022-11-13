@@ -5,9 +5,11 @@
 </div>
 <div class="rooms">
 <% @rooms.each do |room|%>
+<%= link_to  room_messages_path(room.id), class:"rooms-list" do  %>
 <div class="rooms-info">
+
 <div class="room-info">
-ルーム名：<%= link_to room.room_name, room_messages_path(room.id), class: "link"  %>
+ルーム名：<%=  room.room_name  %>
 </div>
 <div class="room-info">
 コンセプト：<%= room.concept%>
@@ -22,6 +24,7 @@
 所属人数:<%= room.room_users.count + 1%>人
 </div>
 </div>
+<% end%>
 <% end%>
 <div>
 </div>

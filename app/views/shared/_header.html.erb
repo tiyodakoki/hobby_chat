@@ -10,7 +10,7 @@
 <% end %>
   <li class="category-menu" id="category-menu">カテゴリー
   <ul class="category-lists hidden" id="category-pull-down">
-  <li><%=link_to 'ボードゲーム',"rooms/?category_id=2"%></li>
+  <li><%=link_to 'ボードゲーム', category_rooms_path(category_id: 2)%></li>
   <li><%=link_to 'デジタルゲーム',"rooms/?category_id=3"%></li>
   <li><%=link_to 'コミック',"rooms/?category_id=4"%></li>
   <li><%=link_to '映画',"rooms/?category_id=5"%></li>

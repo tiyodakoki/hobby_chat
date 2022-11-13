@@ -8,10 +8,15 @@ class RoomsController < ApplicationController
   def show
     @rooms = Room.category(params[:category_id])
   end
+  def category
+    @rooms = Room.category(params[:category_id])
+  end
   def search
-    keyword = params[:keyword]
-    tag = params[:keyword]
-    @rooms = Room.search(keyword, tag)
+    if (params[:keyword]) == '#'
+      @rooms = Tag.search(params[:keyword]).order('created_at DESC')
+    else
+      @rooms = Room.search(params[:keyword]).order('created_at DESC')
+    end
   end
   def room_user
     # @room = Room.find(params[:id])
@@ -21,8 +26,16 @@ class RoomsController < ApplicationController
     
       @room = Room.find(params[:id])
       user = User.find(params[:id])
-      @room.users << user
-      redirect_to action: :index
+      @room.users << current_user
+      redirect_to room_messages_path(@room.id)
+  end
+  def deroom_user
+    @room = Room.find(params[:id])
+    user = current_user
+    
+    room_user = RoomUser.find_by(user_id: user.id, room_id: @room.id)
+    room_user.delete
+    redirect_to room_messages_path(@room.id)
   end
   
   def create
