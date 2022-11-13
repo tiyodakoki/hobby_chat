@@ -5,6 +5,8 @@ Rails.application.routes.draw do
     collection do
       get 'search'
       get 'category'
+      get 'join'
+      get 'recomend'
     end
       member do
         post 'room_user'

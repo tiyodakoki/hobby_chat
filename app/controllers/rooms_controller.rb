@@ -6,8 +6,19 @@ class RoomsController < ApplicationController
     @room_form = RoomForm.new
   end
   def show
-    @rooms = Room.category(params[:category_id])
+    room_user = RoomUser.find_by(user_id: current_user.id)
+    @rooms = Room.find_by(room_id: room_user.room_id)
   end
+  def join
+    join_user = RoomUser.where(user_id: current_user.id).pluck(:room_id)
+    @rooms = Room.where(id: join_user)
+   end
+   def recomend
+    aa = Room.where(category_id: current_user.category.id).pluck(:category_id)
+    @rooms = Room.where(id: aa)
+    
+    
+   end
   def category
     @rooms = Room.category(params[:category_id])
   end
@@ -25,7 +36,7 @@ class RoomsController < ApplicationController
     # end
     
       @room = Room.find(params[:id])
-      user = User.find(params[:id])
+      user = User.find(current_user.id)
       @room.users << current_user
       redirect_to room_messages_path(@room.id)
   end

@@ -2,30 +2,27 @@
 <div class="content-main">
 <div class="content-list">
 <div class="content-top">
-<div class="category"><%= link_to image_tag("igo.jpeg" ), "rooms/?category_id=2" %><p>ボードゲーム</p></div> 
-<div class="category"><%= link_to image_tag("game.png" ), "rooms/?category_id=3" %><p>デジタルゲーム</p> </div>
-<div class="category"><%= link_to image_tag("comic.jpeg" ), "rooms/?category_id=4" %><p>コミック<p></div>
+<div class="category"><%= link_to image_tag("igo.jpeg" ), category_rooms_path(category_id: 2) %><p>ボードゲーム</p></div> 
+<div class="category"><%= link_to image_tag("game.png" ),category_rooms_path(category_id: 3) %><p>デジタルゲーム</p> </div>
+<div class="category"><%= link_to image_tag("comic.jpeg" ), category_rooms_path(category_id: 4) %><p>コミック<p></div>
 </div>
 <div class="content-center"> 
-<div class="category"><%= link_to image_tag("movie.jpeg" ), "rooms/?category_id=5" %><p>映画</p></div> 
-<div class="category"><%= link_to image_tag("sport.jpeg" ), "rooms/?category_id=6" %><p>スポーツ</p> </div>
-<div class="category"><%= link_to image_tag("gamble.jpeg" ), "rooms/?category_id=7" %><p>ギャンブル</p> </div>
+<div class="category"><%= link_to image_tag("movie.jpeg" ), category_rooms_path(category_id: 5) %><p>映画</p></div> 
+<div class="category"><%= link_to image_tag("sport.jpeg" ), category_rooms_path(category_id: 6) %><p>スポーツ</p> </div>
+<div class="category"><%= link_to image_tag("gamble.jpeg" ),category_rooms_path(category_id: 7) %><p>ギャンブル</p> </div>
 </div>
 <div class="content-bottom">
-<div class="category"><%= link_to image_tag("etc.jpeg" ), "rooms/?category_id=8" %><p>その他</p> </div>
+<div class="category"><%= link_to image_tag("etc.jpeg" ),category_rooms_path(category_id: 8) %><p>その他</p> </div>
 <% if user_signed_in?%>
-<div class="category"> 
+<div class="category">
+<%= link_to image_tag("join.jpeg" ), join_rooms_path %><p>所属ルーム</p>
 
-<% @rooms.each do |room|%>
-<% if (current_user.category_id == room.category_id) && (current_user.area_id == room.area_id)%>
-<div>
-あなたへのオススメ
-<%= link_to room.room_name, room_messages_path(room.id)  %>
-<%= room.concept%>
-<%= room.area.name%><br>
 </div>
-<% end%>
-<% end%>
+<div class="category"> 
+<%= link_to image_tag("recomend.jpeg" ), recomend_rooms_path %><p>オススメ</p>
+
+
+
 </div>
 <% end %>
 </div>
