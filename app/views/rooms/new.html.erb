@@ -2,6 +2,7 @@
 <div class="new-main">
 <div class="new-list">
 <%= form_with model: @room_form, url: rooms_path, method: :post,  local: true do |f|%>
+<%= render 'shared/error_messages', model: f.object %>
 <div class="new-form">
 <div class="new-content"><h1>ルーム名</h1><%= f.text_area :room_name, class:"room-name", id:"room-name", placeholder:"ルーム名"%></div>
 <div class="new-content"><h1>コンセプト</h1><%= f.text_area :concept, class:"room-concept", id:"room-concept",placeholder:"コンセプト"%></div>

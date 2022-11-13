@@ -2,8 +2,8 @@
   display: flex;
   justify-content: space-between;
   width: 100%;
-  padding: 0 100px 0 30px;
-  background-color: #DBDBDB;
+  padding: 0 230px 0 30px;
+  background-color: gray;
 }
 
 .header a {
@@ -70,12 +70,7 @@ position: absolute;
   bottom: 0;
 
 }
-.room-show{
-  height: calc(100%-200px);
-  background-color: bisque;
-  width: 100%;
 
-}
 .new-room{
   display: flex;
 
@@ -98,7 +93,84 @@ position: absolute;
 .main-messages{
   display: flex;
   justify-content: space-between;
+  overflow-y: auto;
+  height: 100%;
+  font-size: large;
+}
+.propose{
+  border: 1px solid;
+  margin: 10px;
+  font-size: 20px;
+background-color:whitesmoke;
 }
 .propose-list{
 
+  width: 500px;
+
+ 
+}
+.form-list{
+ position: absolute;
+ height: 100px;
+ bottom: 0;
+ background-color: azure;
+ width: 100%;
+ display: flex;
+ position: fixed;
+}
+/* room-show */
+.rooms-info{
+  height: 100px;
+  width: 400px;
+  margin-top: 10px;
+  margin-right: 50px;
+  background-color:whitesmoke;
+  color: black;
+}
+.room-show{
+  margin-top: 30px;
+  margin-left: 30px;
+ 
+}
+.room-show a{
+  font-size: 30px;
+}
+.rooms-show{
+display: flex;
+justify-content: space-between;
+}
+.rooms-list{
+  text-decoration: none;
+}
+.link{
+  border-radius: auto;
+  color:#000000;
+  font-size: large;
+  
+}
+.hidden{
+  display: none;
+}
+.category-menu{
+  margin: 0 auto;
+  position: relative;
+
+
+}
+.category-lists li{
+  display: flex;
+  height: 35px;
+  line-height: 50px;
+  text-align: center;
+  color: white;
+  border: 1px solid #CCCCCC;
+  background-color: whitesmoke;
+  position: relative;
+  width: 100px;
+  
+  
+}
+.category-lists{
+  /* padding-top: 250px; */
+  position: absolute;
 }

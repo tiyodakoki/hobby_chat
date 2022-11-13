@@ -1,5 +1,5 @@
 <%=  render "shared/header" %>
-
+<div class="messages">
 <div class="main-messages">
 
 <div id="list">
@@ -9,26 +9,72 @@
     <div class="post">
     <div class="post-date">
       投稿日時：<%= message.created_at %>
-    </div>
+    </div> 
     <div class="post-content">
       <%= message.content %>
       <%= message.user.nickname%>
     </div>
 
-    <%= image_tag message.image.variant(resize: '200x200'), class: 'message-image' if message.image.attached? %>
+    <%# <%= image_tag message.image.variant(resize: '200x200'), class: 'message-image' if message.image.attached? %> 
   </div>
 <% end %>
 </div>
 <div class="propose-list">
 <% @proposes.each do |propose|%>
-<%= propose.title %>
-<%=%>
 
+
+
+
+<div class="propose">
+<div class="propose-title">
+タイトル：<%= propose.title %> 
+</div>
+<div class=propose-concept>
+目的：<%= propose.concept %>
+</div>
+<div class="propose-require">
+必要人数：<%= "#{propose.require_people}人" %>
+</div>
+<div class="propose-info">
+提案者:<%= propose.user.nickname%>
+</div>
+<div class="propose-good">
+<%= button_to "参加する", good_room_propose_path(@room.id, propose.id), method: :post %>
+参加者:<%= propose.goods.count%>人 
+</div>
+<div class="propose-join">
+
+参加者リスト:
+<% propose.goods.each do |good| %>
+ <%=good.user.nickname%>
+<% end %>
+
+</div>
+</div> 
+
+
+<% end%>
+</div>
+</div>
+
+
+
+<div class="form-list">
+<div class="message-form">
+<%= form_with  model: [@room, @message], method: :post, class: 'form', id: 'form', local: true do |f| %>
+  <div class="form-input">
+    <%= f.text_field :content, class: 'form-message', id: "new-message", placeholder: 'type a message'%>
+    <%# <label class="form-image">
+      <span class="image-file">画像</span>
+      <%= f.file_field :image, class: 'hidden', id: 'new-image' %>
+    <%# </label> %> 
+  <%= f.submit '送信', class: 'form-submit', id: 'submit' %>
+  </div>
 <% end %>
 </div>
-</div>
+
 <div class="message-propose">
-<%= form_with url: propose_room_path(@room.id), method: :post, class: 'form', id: 'propose-form', local: true do |f|%>
+<%= form_with url: room_proposes_path(@room.id), method: :post, class: 'form', id: 'propose-form', local: true do |f|%>
 <div class="form-input">
 <%= f.text_field :title, class: 'form-title', id: 'new-propose', placeholder: 'タイトルを入力してください'%>
 <%= f.text_field :concept, class: 'form-concept', id: 'new-concept', placeholder: '目的を入力してください'%>
@@ -38,20 +84,10 @@
 <% end %>
 </div>
 </div>
-
-
-
-
-<%= form_with  model: [@room, @message], method: :post, class: 'form', id: 'form', local: true do |f| %>
-  <div class="form-input">
-    <%= f.text_field :content, class: 'form-message', id: "new-message", placeholder: 'type a message'%>
-    <label class="form-image">
-      <span class="image-file">画像</span>
-      <%= f.file_field :image, class: 'hidden', id: 'new-image' %>
-    </label>
-  </div>
-  <%= f.submit '送信', class: 'form-submit', id: 'submit' %>
-<% end %>
-
+<% unless @room.users.exists?(id: current_user.id)%>
 <%= button_to "所属する", room_user_room_path(@room.id), method: :post %>
+<% else %>
+<%= button_to "脱退する", deroom_user_room_path(@room.id), method: :delete %>
+<%end %>
+</div>
 

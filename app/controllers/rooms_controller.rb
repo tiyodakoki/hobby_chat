@@ -6,12 +6,28 @@ class RoomsController < ApplicationController
     @room_form = RoomForm.new
   end
   def show
+    room_user = RoomUser.find_by(user_id: current_user.id)
+    @rooms = Room.find_by(room_id: room_user.room_id)
+  end
+  def join
+    join_user = RoomUser.where(user_id: current_user.id).pluck(:room_id)
+    @rooms = Room.where(id: join_user)
+   end
+   def recomend
+    aa = Room.where(category_id: current_user.category.id).pluck(:category_id)
+    @rooms = Room.where(id: aa)
+    
+    
+   end
+  def category
     @rooms = Room.category(params[:category_id])
   end
   def search
-    keyword = params[:keyword]
-    tag = params[:keyword]
-    @rooms = Room.search(keyword, tag)
+    if (params[:keyword]) == '#'
+      @rooms = Tag.search(params[:keyword]).order('created_at DESC')
+    else
+      @rooms = Room.search(params[:keyword]).order('created_at DESC')
+    end
   end
   def room_user
     # @room = Room.find(params[:id])
@@ -20,24 +36,19 @@ class RoomsController < ApplicationController
     # end
     
       @room = Room.find(params[:id])
-      user = User.find(params[:id])
-      @room.users << user
-      redirect_to action: :index
+      user = User.find(current_user.id)
+      @room.users << current_user
+      redirect_to room_messages_path(@room.id)
   end
-  def propose
+  def deroom_user
     @room = Room.find(params[:id])
-    @propose = Propose.new(propose_params)
-    if @propose.save
-    redirect_back(fallback_location: room_messages_path(@room.id))
-    end
-
+    user = current_user
+    
+    room_user = RoomUser.find_by(user_id: user.id, room_id: @room.id)
+    room_user.delete
+    redirect_to room_messages_path(@room.id)
   end
-
-
   
-    
-
-    
   def create
     @room_form = RoomForm.new(room_form_params)
     if @room_form.valid?
@@ -48,13 +59,17 @@ class RoomsController < ApplicationController
     end
   end
 
+ 
+
   private
   def room_form_params
     params.require(:room_form).permit(:room_name, :concept, :category_id, :area_id, :tag_name).merge(user_id: current_user.id)
   end
-  def propose_params
-  params.permit(:title, :concept, :require_people).merge(user_id: current_user.id, room_id: @room.id)
-end
+  
+  # def good_params
+  #   params.merge(propose_id: @propose.id, user_id: current_user.id)
+  # end
+  
  
   # def room_params
   #   params.require(:room).merge(user_id: current_user.id, room_id: params[:room_id])
